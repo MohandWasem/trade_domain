@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,8 @@ class OfferController extends Controller
     public function index()
     {
         $Offers=Offer::get();
-        return view("offers.show",compact('Offers'));
+        $Items=Item::get();
+        return view("offers.show",compact('Offers','Items'));
     }
 
     public function show()

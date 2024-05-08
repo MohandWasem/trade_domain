@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\OfferController;
 
 /*
@@ -33,4 +34,15 @@ Route::controller(OfferController::class)->middleware('AuthAdmin')->group(functi
     Route::post('Offers/update/{id}','update')->name('offers.update');
     Route::post('Offers/delete/{id}','delete')->name('offers.delete');
     Route::get('logout','logout')->name('logout');
+});
+
+//   ----------------Items---------- // 
+
+Route::controller(ItemController::class)->middleware('AuthAdmin')->group(function(){
+    Route::get('Items/add','show')->name('items.add');
+    Route::post('Items/create','create')->name('items.create');
+    Route::post('Items/edit/{id}','edit')->name('items.edit');
+    Route::post('Items/update/{id}','update')->name('items.update');
+    Route::post('Items/delete/{id}','delete')->name('items.delete');
+
 });
