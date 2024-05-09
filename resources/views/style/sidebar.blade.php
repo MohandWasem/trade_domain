@@ -27,6 +27,13 @@
     <i class="mdi mdi-home menu-icon"></i>
     </a>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('items')}}">
+        <span class="menu-title">Items</span>
+        <i class="mdi mdi-home menu-icon"></i>
+        </a>
+        </li>
     
    
     

@@ -12,13 +12,14 @@ class OfferController extends Controller
     public function index()
     {
         $Offers=Offer::get();
-        $Items=Item::get();
-        return view("offers.show",compact('Offers','Items'));
+        $items=Item::get();
+        return view("offers.show",compact('Offers','items'));
     }
 
     public function show()
     {
-        return view("offers.add");
+        $items=Item::get();
+        return view("offers.add",compact('items'));
     }
 
     public function create(Request $request)

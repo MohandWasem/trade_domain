@@ -42,7 +42,7 @@
 
 
 <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
-<a href="{{route('offers')}}" class="btn btn-light">Cancel</a>
+<a href="{{route('items')}}" class="btn btn-light">Cancel</a>
 </form>
 </div>
 </div>

@@ -4,11 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ItemController extends Controller
 {
+
+    public function index()
+    {
+        $items=Item::get();
+        return view('items.show',compact('items'));
+    }
     public function show()
     {
+        
         return view('items.add');
     }
 
@@ -22,7 +30,7 @@ class ItemController extends Controller
             'conversion_rate'=>$request->input('conversion_rate'),
             'total_price'=>$request->input('total_price'),
         ]);
-        return redirect()->route('offers');
+        return redirect()->route('items');
     }
 
     public function edit($id)
@@ -43,12 +51,24 @@ class ItemController extends Controller
             'conversion_rate'=>$request->input('conversion_rate'),
             'total_price'=>$request->input('total_price'),
         ]);
-        return redirect()->route('offers');
+        return redirect()->route('items');
     }
 
     public function delete($id)
     {
         Item::where('id',$id)->delete();
         return redirect()->back();
+    }
+
+    public function downloadpdf()
+    {
+        $items=Item::get();
+        $data = [
+            'title'=>'Overseas Egypt',
+            'date'=>date('m/d/Y'),
+            'items'=>$items,
+        ];
+        $pdf = Pdf::loadView('items.pdf',$data);
+        return $pdf->download('offer.pdf');
     }
 }
