@@ -17,10 +17,13 @@
         <thead>
             <tr class="table-responsive-sm">
               <th>  # </th>
-              <th> Serial_Number </th>
-              <th> Client </th>
-              <th> Date </th>
-              <th> Sales_Man </th>
+              <th> Serial_Number</th>
+              <th> Client</th>
+              <th> Date</th>
+              <th> Sales_Man</th>
+              <th> Attention</th>
+              <th> Subject</th>
+              <th> Terms & Conditions:</th>
               <th> Action </th>
             </tr>
           </thead>
@@ -34,6 +37,9 @@
                <td>{{$offer->client}}</td>
                <td>{{$offer->date}}</td>
                <td>{{$offer->sales_man}}</td>
+               <td>{{$offer->attention}}</td>
+               <td>{{$offer->subject}}</td>
+               <td>{{$offer->terms}}</td>
                <td>
                 <a href="{{route('items.add',$offer)}}" class="btn btn-gradient-dark btn-fw">Add Item</a><a href="{{route('pdf.create',$offer->id)}}" class="btn btn-gradient-success btn-fw">Create PDF</a>
                  <form action="{{route('offers.edit',$offer->id)}}" method="post">

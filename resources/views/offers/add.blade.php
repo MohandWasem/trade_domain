@@ -22,9 +22,24 @@
 </div>
 
 <div class="form-group">
-    <label for="exampleInputName1">Sales_Man</label>
-    <input type="text" name="sales_man" class="form-control" id="exampleInputName1" value="{{old('sales_man')}}" placeholder="Sales_Man" required>
-    </div>
+<label for="exampleInputName1">Sales_Man</label>
+<input type="text" name="sales_man" class="form-control" id="exampleInputName1" value="{{old('sales_man')}}" placeholder="Sales_Man" required>
+</div>
+
+<div class="form-group">
+<label for="exampleInputName1">Attention</label>
+<input type="text" name="attention" class="form-control" id="exampleInputName1" value="{{old('attention')}}" placeholder="Attention" required>
+</div>
+
+<div class="form-group">
+<label for="exampleInputName1">Subject</label>
+<input type="text" name="subject" class="form-control" id="exampleInputName1" value="{{old('subject')}}" placeholder="Subject" required>
+</div>
+
+<div class="form-group">
+<label for="exampleInputPassword4">Terms & Conditions:</label>
+<textarea name="terms" class="form-control"placeholder="Terms" id="exampleInputPassword4" cols="30" rows="10"></textarea>
+</div>
 
 
 <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>

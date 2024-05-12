@@ -11,7 +11,7 @@ class Offer extends Model
     use HasFactory;
 
     protected $fillable= [
-        'client','date','sales_man'
+        'client','date','sales_man','attention','subject','terms'
 
     ];
 

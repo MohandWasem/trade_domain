@@ -28,6 +28,9 @@ class OfferController extends Controller
         'client'=>$request->client,
         'date'=>$request->date,
         'sales_man'=>$request->sales_man,
+        'attention'=>$request->attention,
+        'subject'=>$request->subject,
+        'terms'=>$request->terms,
         ]);
         return redirect()->route('offers')->with("success","Offer has been added successfully");
     }
@@ -45,6 +48,9 @@ class OfferController extends Controller
             'client'=>$request->client,
             'date'=>$request->date,
             'sales_man'=>$request->sales_man,
+            'attention'=>$request->attention,
+            'subject'=>$request->subject,
+            'terms'=>$request->terms,
         ]);
         return redirect()->route('offers');
     }

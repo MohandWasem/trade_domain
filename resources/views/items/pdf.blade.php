@@ -123,7 +123,7 @@
             margin-bottom: 20px;
             border-bottom: 1px solid #b2aaaa;
         }
-        .foot {
+        /* .foot {
             position: fixed;
             bottom: 60;
             right: 20;
@@ -132,7 +132,7 @@
 
         .foot p {
             margin: 5px 0;
-        }
+        } */
     </style>
 </head>
 <body>
@@ -141,8 +141,8 @@
         <p class="pro">Professional Freight Forwarder</p>
         <p class="date">Date : {{$date}}</p>
         <p class="reference">Our reference: Main. 021</p>
-        <p class="recipient">Messers <div>Datacenter Dynamics</div>At the kind attention of Eng Ahmed Ibrahim</p>
-        <h2 class="subject">Subject: Spare parts offer</h2>
+        <p class="recipient">Messers <div>Datacenter Dynamics</div>At the kind attention of {{$offers->attention}}</p>
+        <h2 class="subject">Subject: {{$offers->subject}}</h2>
         <p class="content">
             <div class="sir">Dear Sir,</div>
             About the above-mentioned subject, please find enclosed our quotation for the supply of the spare parts as below.<br>
@@ -179,10 +179,10 @@
         <div class="terms">
             <h3>Terms & Conditions:</h3>
             <ul>
-                <li>Payment: 50% down payment, 50% after Delivery</li>
-                <li>VAT: not included and to be added with 14%</li>
-                <li>Delivery: 3 to 4 weeks</li>
-                <li>Validity: 1 week</li>
+                <li>{{$offers->terms}}</li>
+                {{-- <li>VAT: not included and to be added with 14%</li> --}}
+                {{-- <li>Delivery: 3 to 4 weeks</li> --}}
+                {{-- <li>Validity: 1 week</li> --}}
             </ul>
         </div>
         <div class="footer margin-top">
@@ -194,13 +194,13 @@
         <div class="address">
             <p>18A El-Obour buildings, Salah Salem St.,</p>
             <p>13th floor flat 3, Cairo, Egypt.</p>
-            {{-- <p>+20-02-22622247</p>
-            <p>info@os-eg.com</p> --}}
-        </div>
-        <div class="foot">
             <p>+20-02-22622247</p>
             <p>info@os-eg.com</p>
         </div>
+        {{-- <div class="foot">
+            <p>+20-02-22622247</p>
+            <p>info@os-eg.com</p>
+        </div> --}}
     </div>
 </body>
 </html>

@@ -72,6 +72,7 @@ class ItemController extends Controller
             'title'=>'Overseas Egypt',
             'date'=>date('m/d/Y'),
             'items'=>$items,
+            'offers'=>$offer,
         ];
         $pdf = Pdf::loadView('items.pdf',$data);
         return $pdf->download('offer.pdf');
