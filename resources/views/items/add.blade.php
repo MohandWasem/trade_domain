@@ -40,7 +40,8 @@
 <input type="text" name="total_price" class="form-control" id="total" value="" placeholder="total price" readonly required>
 </div>
 
-
+<input type="hidden" name="offer_id" value="{{ $offer->id }}">
+  
 <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
 <a href="{{route('offers')}}" class="btn btn-light">Cancel</a>
 </form>

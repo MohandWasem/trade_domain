@@ -23,6 +23,7 @@
                               <th> Currency </th>
                               <th> Conversion_Rate </th>
                               <th> Total_Price </th>
+                              <th> Sales_Man </th>
                               <th> Action </th>
                             </tr>
                           </thead>
@@ -39,6 +40,7 @@
                                     <td>{{$items->currency}}</td>
                                     <td>{{$items->conversion_rate}}</td>
                                     <td>{{$items->total_price}}</td>
+                                    <td>{{$items->offer->sales_man}}</td>
                                     <td>
                                       <form action="{{route('items.edit',$items->id)}}" method="post">
                                         @csrf

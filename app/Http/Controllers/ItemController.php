@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Offer;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -11,13 +12,13 @@ class ItemController extends Controller
 
     public function index()
     {
-        $items=Item::get();
+        $items=Item::with('offer')->get();
         return view('items.show',compact('items'));
     }
-    public function show()
+    public function show($offer_id)
     {
-        
-        return view('items.add');
+        $offer = Offer::findOrfail($offer_id);
+        return view('items.add',compact('offer'));
     }
 
     public function create(Request $request)
@@ -29,8 +30,9 @@ class ItemController extends Controller
             'currency'=>$request->input('currency'),
             'conversion_rate'=>$request->input('conversion_rate'),
             'total_price'=>$request->input('total_price'),
+            'offer_id'=>$request->input('offer_id'),
         ]);
-        return redirect()->route('items');
+        return redirect()->route('offers');
     }
 
     public function edit($id)
@@ -60,9 +62,12 @@ class ItemController extends Controller
         return redirect()->back();
     }
 
-    public function downloadpdf()
+    public function downloadpdf($id)
     {
-        $items=Item::get();
+        // return $items=Offer::findOrfail($id)->with('items')->get();
+         $offer = Offer::findOrfail($id);
+          $items = $offer->items;
+
         $data = [
             'title'=>'Overseas Egypt',
             'date'=>date('m/d/Y'),

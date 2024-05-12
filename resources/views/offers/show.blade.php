@@ -35,7 +35,7 @@
                <td>{{$offer->date}}</td>
                <td>{{$offer->sales_man}}</td>
                <td>
-                <a href="{{route('items.add')}}" class="btn btn-gradient-dark btn-fw">Add Item</a><a href="{{route('pdf.create')}}" class="btn btn-gradient-success btn-fw">Create PDF</a>
+                <a href="{{route('items.add',$offer)}}" class="btn btn-gradient-dark btn-fw">Add Item</a><a href="{{route('pdf.create',$offer->id)}}" class="btn btn-gradient-success btn-fw">Create PDF</a>
                  <form action="{{route('offers.edit',$offer->id)}}" method="post">
                    @csrf
                  <input type="submit" class="btn btn-info" value="edit">

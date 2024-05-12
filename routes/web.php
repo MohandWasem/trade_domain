@@ -40,11 +40,11 @@ Route::controller(OfferController::class)->middleware('AuthAdmin')->group(functi
 
 Route::controller(ItemController::class)->middleware('AuthAdmin')->group(function(){
     Route::get('Items','index')->name('items');
-    Route::get('Items/add','show')->name('items.add');
+    Route::get('Items/add/{offer_id}','show')->name('items.add');
     Route::post('Items/create','create')->name('items.create');
     Route::post('Items/edit/{id}','edit')->name('items.edit');
     Route::post('Items/update/{id}','update')->name('items.update');
     Route::post('Items/delete/{id}','delete')->name('items.delete');
-    Route::get('create-pdf','downloadpdf')->name('pdf.create');
+    Route::get('create-pdf/{id}','downloadpdf')->name('pdf.create');
 
 });
