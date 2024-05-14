@@ -7,7 +7,9 @@ use App\Http\Controllers\Setup\ClientController;
 use App\Http\Controllers\Setup\ProductController;
 use App\Http\Controllers\Setup\CategoryController;
 use App\Http\Controllers\Setup\CurrencyController;
+use App\Http\Controllers\Setup\ShipmentController;
 use App\Http\Controllers\Setup\SupplierController;
+use App\Http\Controllers\Setup\ShipmentProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,4 +109,26 @@ Route::controller(ProductController::class)->middleware('AuthAdmin')->group(func
     Route::post('Products/edit/{id}','edit')->name('products.edit');
     Route::post('Products/update{id}','update')->name('products.update');
     Route::post('Products/delete{id}','delete')->name('products.delete');
+});
+
+//   ----------------Shipments---------- // 
+
+Route::controller(ShipmentController::class)->middleware('AuthAdmin')->group(function(){
+    Route::get('Shipments','index')->name('shipments');
+    Route::get('Shipments/add','add')->name('shipments.add');
+    Route::post('Shipments/create','create')->name('shipments.create');
+    Route::post('Shipments/edit/{id}','edit')->name('shipments.edit');
+    Route::post('Shipments/update{id}','update')->name('shipments.update');
+    Route::post('Shipments/delete{id}','delete')->name('shipments.delete');
+});
+
+//   ----------------ShipmentProducts---------- // 
+
+Route::controller(ShipmentProductController::class)->middleware('AuthAdmin')->group(function(){
+    Route::get('ShipmentProducts','index')->name('ShipmentProducts');
+    Route::get('ShipmentProducts/add/{shipment_id}','add')->name('ShipmentProducts.add');
+    Route::post('ShipmentProducts/create','create')->name('ShipmentProducts.create');
+    Route::post('ShipmentProducts/edit/{id}','edit')->name('ShipmentProducts.edit');
+    Route::post('ShipmentProducts/update/{id}','update')->name('ShipmentProducts.update');
+    Route::post('ShipmentProducts/delete/{id}','delete')->name('ShipmentProducts.delete');
 });
