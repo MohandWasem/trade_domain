@@ -43,8 +43,7 @@ class ShipmentProductSalesController extends Controller
             'total_sales_price'=>$request->input('total_sales_price'),
             'shipmentproduct_id'=>$request->input('shipmentproduct_id'),
         ]);
-        // return redirect()->route('shipments');
-        return redirect()->back();
+        return redirect()->route('shipments');
     }
 
     public function delete($id)
