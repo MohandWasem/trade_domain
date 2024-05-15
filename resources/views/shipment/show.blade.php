@@ -64,7 +64,7 @@
   <div class="col-lg-12 stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">ShipmentProducts</h4>
+        <h4 class="card-title">Shipment_Products</h4>
         @if(Session::has('success'))
         <div class="alert alert-success">
               {{Session::get('success')}}</div>
@@ -98,6 +98,7 @@
              <td>{{$ShipmentProduct->price}}</td>
              <td>{{$ShipmentProduct->total_price}}</td>
              <td>
+               <a href="{{route('ShipmentProductSale.add',$ShipmentProduct)}}" class="btn btn-gradient-success btn-fw">Add ProductSales</a>
                <form action="{{route('ShipmentProducts.edit',$ShipmentProduct->id)}}" method="post">
                  @csrf
                <input type="submit" class="btn btn-info" value="edit">
@@ -121,5 +122,75 @@
       </div>
     </div>
   </div>
+
+
+          {{---------------- ShipmentProductSales -----------------}}
+          <div class="col-lg-12 stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Shipment_Product_Sales</h4>
+                @if(Session::has('success'))
+                <div class="alert alert-success">
+                      {{Session::get('success')}}</div>
+                @endif
+                <div class="table-responsive">
+                <table id="example" class="table table-striped table-responsive-sm table-bordered" style="width:100%">
+                <thead>
+                    <tr class="table-responsive-sm">
+                      <th>  # </th>
+                      <th> Serial_Number</th>
+                      <th> Client_Name</th>
+                      <th> Supplier_Name</th>
+                      <th> Product_Name</th>
+                      <th> Quantity</th>
+                      <th> Price</th>
+                      <th> Total_Price</th>
+                      <th> Quantity_Sales</th>
+                      <th> Sales_Price</th>
+                      <th> Total_Price_Sales</th>
+                      <th> Action </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+        
+                   @forelse ($ShipmentProductSales as $ShipmentProductSale)
+                       
+                   <tr class="table-responsive-sm">
+                     <td></td>
+                     <td>{{$ShipmentProductSale->serial_shipmentproductsale}}</td>
+                     <td>{{$ShipmentProductSale->productsales->shipment->clients->client_name}}</td>
+                     <td>{{$ShipmentProductSale->productsales->shipment->suppliers->supplier_name}}</td>
+                     <td>{{$ShipmentProductSale->productsales->products->product_name}}</td>
+                     <td>{{$ShipmentProductSale->productsales->quantity}}</td>
+                     <td>{{$ShipmentProductSale->productsales->price}}</td>
+                     <td>{{$ShipmentProductSale->productsales->total_price}}</td>
+                     <td>{{$ShipmentProductSale->quantity_sale}}</td>
+                     <td>{{$ShipmentProductSale->sales_price}}</td>
+                     <td>{{$ShipmentProductSale->total_sales_price}}</td>
+                     <td>
+                       
+                       <form action="{{route('ShipmentProductSale.edit',$ShipmentProductSale->id)}}" method="post">
+                         @csrf
+                       <input type="submit" class="btn btn-info" value="edit">
+                       
+                     </form>
+        
+                     <form action="{{route('ShipmentProductSale.delete',$ShipmentProductSale->id)}}" method="post">
+                       @csrf
+                       <input type="submit" class="btn btn-danger" value="delete">
+                      </form>
+                    </td>
+                    
+                   @empty
+                       
+                   @endforelse
+           
+                  </tbody>
+        
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
 
 @endsection

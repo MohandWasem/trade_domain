@@ -48,10 +48,17 @@
             <li class="nav-item"> <a class="nav-link" href="{{route('currencies')}}">Currencies</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('categories')}}">Categories</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('products')}}">Products</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{route('shipments')}}">Shipments</a></li>
+            {{-- <li class="nav-item"> <a class="nav-link" href="{{route('shipments')}}">Shipments</a></li> --}}
           </ul>
         </div>
       </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('shipments')}}">
+        <span class="menu-title">Shipments</span>
+        <i class="mdi mdi-contacts menu-icon"></i>
+        </a>
+    </li>
     
    
     

@@ -7,6 +7,7 @@ use App\Models\Shipment;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use App\Models\ShipmentProduct;
+use App\Models\ShipmentProductSale;
 use App\Http\Controllers\Controller;
 
 class ShipmentController extends Controller
@@ -15,7 +16,8 @@ class ShipmentController extends Controller
     {
         $Shipments=Shipment::with('clients','suppliers')->get();
         $ShipmentProducts=ShipmentProduct::with('products','shipment')->get();
-        return view("shipment.show",compact('Shipments','ShipmentProducts'));
+        $ShipmentProductSales=ShipmentProductSale::with('productsales')->get();
+        return view("shipment.show",compact('Shipments','ShipmentProducts','ShipmentProductSales'));
     }
 
     public function add()

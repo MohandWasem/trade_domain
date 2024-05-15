@@ -10,6 +10,7 @@ use App\Http\Controllers\Setup\CurrencyController;
 use App\Http\Controllers\Setup\ShipmentController;
 use App\Http\Controllers\Setup\SupplierController;
 use App\Http\Controllers\Setup\ShipmentProductController;
+use App\Http\Controllers\Setup\ShipmentProductSalesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -131,4 +132,16 @@ Route::controller(ShipmentProductController::class)->middleware('AuthAdmin')->gr
     Route::post('ShipmentProducts/edit/{id}','edit')->name('ShipmentProducts.edit');
     Route::post('ShipmentProducts/update/{id}','update')->name('ShipmentProducts.update');
     Route::post('ShipmentProducts/delete/{id}','delete')->name('ShipmentProducts.delete');
+});
+
+//   ----------------ShipmentProductSales---------- // 
+
+Route::controller(ShipmentProductSalesController::class)->middleware('AuthAdmin')->group(function(){
+    // Route::get('ShipmentProductSale','index')->name('ShipmentProductSale');
+    Route::get('ShipmentProductSales/add/{shipmentsales_id}','add')->name('ShipmentProductSale.add');
+    Route::post('ShipmentProductSales/create','create')->name('ShipmentProductSale.create');
+    Route::post('ShipmentProductSales/edit/{id}','edit')->name('ShipmentProductSale.edit');
+    Route::post('ShipmentProductSales/update/{id}','update')->name('ShipmentProductSale.update');
+    Route::post('ShipmentProductSales/delete/{id}','delete')->name('ShipmentProductSale.delete');
+
 });
