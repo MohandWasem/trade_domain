@@ -35,7 +35,7 @@
              <td>{{$Shipment->suppliers->supplier_name}}</td>
              <td>{{$Shipment->shipping_agent}}</td>
              <td>
-               <a href="{{route('ShipmentProducts.add',$Shipment)}}" class="btn btn-gradient-dark btn-fw">Add Product</a>
+               <a href="{{route('ShipmentProducts.add',$Shipment)}}" class="btn btn-gradient-dark btn-fw">Add Product</a><a href="{{route('Expenses.add',$Shipment)}}" class="btn btn-gradient-success btn-fw">Add Expenses</a>
                <form action="{{route('shipments.edit',$Shipment->id)}}" method="post">
                  @csrf
                <input type="submit" class="btn btn-info" value="edit">
@@ -65,10 +65,6 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Shipment_Products</h4>
-        @if(Session::has('success'))
-        <div class="alert alert-success">
-              {{Session::get('success')}}</div>
-        @endif
         <div class="table-responsive">
         <table id="example" class="table table-striped table-responsive-sm table-bordered" style="width:100%">
         <thead>
@@ -129,10 +125,6 @@
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Shipment_Product_Sales</h4>
-                @if(Session::has('success'))
-                <div class="alert alert-success">
-                      {{Session::get('success')}}</div>
-                @endif
                 <div class="table-responsive">
                 <table id="example" class="table table-striped table-responsive-sm table-bordered" style="width:100%">
                 <thead>

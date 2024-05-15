@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\Setup\ClientController;
+use App\Http\Controllers\Setup\ExpenseController;
 use App\Http\Controllers\Setup\ProductController;
 use App\Http\Controllers\Setup\CategoryController;
 use App\Http\Controllers\Setup\CurrencyController;
@@ -144,4 +145,15 @@ Route::controller(ShipmentProductSalesController::class)->middleware('AuthAdmin'
     Route::post('ShipmentProductSales/update/{id}','update')->name('ShipmentProductSale.update');
     Route::post('ShipmentProductSales/delete/{id}','delete')->name('ShipmentProductSale.delete');
 
+});
+
+//   ----------------Expenses---------- // 
+
+Route::controller(ExpenseController::class)->middleware('AuthAdmin')->group(function(){
+    Route::get('Expenses','index')->name('Expenses');
+    Route::get('Expenses/add/{shipment_id}','add')->name('Expenses.add');
+    Route::post('Expenses/create','create')->name('Expenses.create');
+    Route::post('Expenses/edit/{id}','edit')->name('Expenses.edit');
+    Route::post('Expenses/update/{id}','update')->name('Expenses.update');
+    Route::post('Expenses/delete/{id}','delete')->name('Expenses.delete');
 });

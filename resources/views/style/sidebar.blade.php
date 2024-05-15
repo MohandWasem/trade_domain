@@ -59,6 +59,13 @@
         <i class="mdi mdi-contacts menu-icon"></i>
         </a>
     </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="{{route('Expenses')}}">
+      <span class="menu-title">Expenses</span>
+      <i class="mdi mdi-contacts menu-icon"></i>
+      </a>
+  </li>
     
    
     
