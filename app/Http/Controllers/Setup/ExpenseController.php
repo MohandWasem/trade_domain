@@ -40,7 +40,6 @@ class ExpenseController extends Controller
     {
         $currencies = Currency::get();
         $Expenses = Expense::findOrfail($id);
-        // $shipment = Shipment::get();
         return view('expenses.edit',compact('currencies','Expenses'));
     }
 

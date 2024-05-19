@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Overseas Egypt</title>
-    {{-- <link rel="stylesheet" href="styles.css"> --}}
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -123,16 +122,6 @@
             margin-bottom: 20px;
             border-bottom: 1px solid #b2aaaa;
         }
-        /* .foot {
-            position: fixed;
-            bottom: 60;
-            right: 20;
-            padding: 20px;
-        }
-
-        .foot p {
-            margin: 5px 0;
-        } */
     </style>
 </head>
 <body>
@@ -180,9 +169,6 @@
             <h3>Terms & Conditions:</h3>
             <ul>
                 <li>{{$offers->terms}}</li>
-                {{-- <li>VAT: not included and to be added with 14%</li> --}}
-                {{-- <li>Delivery: 3 to 4 weeks</li> --}}
-                {{-- <li>Validity: 1 week</li> --}}
             </ul>
         </div>
         <div class="footer margin-top">
@@ -190,17 +176,13 @@
             <div>@:Overseas Egypt</div>
         </div>
 
-        <div class="line"></div> <!-- خط -->
+        <div class="line"></div>
         <div class="address">
             <p>18A El-Obour buildings, Salah Salem St.,</p>
             <p>13th floor flat 3, Cairo, Egypt.</p>
             <p>+20-02-22622247</p>
             <p>info@os-eg.com</p>
         </div>
-        {{-- <div class="foot">
-            <p>+20-02-22622247</p>
-            <p>info@os-eg.com</p>
-        </div> --}}
     </div>
 </body>
 </html>

@@ -35,7 +35,7 @@
              <td>{{$Shipment->suppliers->supplier_name}}</td>
              <td>{{$Shipment->shipping_agent}}</td>
              <td>
-               <a href="{{route('ShipmentProducts.add',$Shipment)}}" class="btn btn-gradient-dark btn-fw">Add Product</a><a href="{{route('Expenses.add',$Shipment)}}" class="btn btn-gradient-success btn-fw">Add Expenses</a>
+               <a href="{{route('ShipmentProducts.add',$Shipment)}}" class="btn btn-gradient-dark btn-fw">Add Product</a><a href="{{route('Expenses.add',$Shipment)}}" class="btn btn-gradient-success btn-fw">Add Expenses</a><a href="{{route('pdf.invoice',$Shipment->id)}}" class="btn btn-gradient-primary btn-fw">Shipment Report</a>
                <form action="{{route('shipments.edit',$Shipment->id)}}" method="post">
                  @csrf
                <input type="submit" class="btn btn-info" value="edit">

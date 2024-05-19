@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\OfferController;
@@ -122,6 +123,7 @@ Route::controller(ShipmentController::class)->middleware('AuthAdmin')->group(fun
     Route::post('Shipments/edit/{id}','edit')->name('shipments.edit');
     Route::post('Shipments/update{id}','update')->name('shipments.update');
     Route::post('Shipments/delete{id}','delete')->name('shipments.delete');
+    Route::get('invoice-pdf/{id}','invoicepdf')->name('pdf.invoice');
 });
 
 //   ----------------ShipmentProducts---------- // 

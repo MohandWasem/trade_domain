@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Client;
+use App\Models\Expense;
 use App\Models\Supplier;
 use App\Models\ShipmentProduct;
 use Illuminate\Database\Eloquent\Model;
@@ -19,6 +20,11 @@ class Shipment extends Model
     public function shipmentproduct()
     {
         return $this->hasMany(ShipmentProduct::class);
+    }
+
+    public function expenses()
+    {
+        return $this->hasMany(Expense::class);
     }
 
     public function clients()

@@ -7,6 +7,7 @@ use App\Models\Shipment;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use App\Models\ShipmentProduct;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\ShipmentProductSale;
 use App\Http\Controllers\Controller;
 
@@ -62,5 +63,26 @@ class ShipmentController extends Controller
     {
         $Shipments=Shipment::where('id',$id)->delete();
         return redirect()->route('shipments');
+    }
+
+    public function invoicepdf($id)
+    {
+          $Shipments = Shipment::findOrfail($id);
+          $shipmentproduct = $Shipments->shipmentproduct;
+          $Expenses = $Shipments->expenses;
+
+        //   $ShipmentProducts = ShipmentProduct::findOrfail($id);
+        //    $sales = $ShipmentProducts->productsales;
+
+
+        $data = [
+            'title'=>'Overseas Egypt',
+            'date'=>date('m/d/Y'),
+            'shipmentproduct'=>$shipmentproduct,
+            'Shipments'=>$Shipments,
+            'Expenses'=>$Expenses,
+        ];
+        $pdf = Pdf::loadView('shipment.pdf',$data);
+        return $pdf->download('invoice.pdf');
     }
 }
