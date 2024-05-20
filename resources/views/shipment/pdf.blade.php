@@ -91,9 +91,9 @@
                     <th>Client</th>
                     <th>Supplier</th>
                     <th>Product</th>
-                    <th>quantity</th>
-                    <th>price</th>
-                    <th>total</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total_Price</th>
                 </tr>
             </thead>
             <tbody>
@@ -111,16 +111,30 @@
                     
                 @endforelse
             </tbody>
-            {{-- <tfoot>
+        </table>
+
+
+        <table>
+            <h2>Sales invoice</h2>
+            <thead>
                 <tr>
-                    <td colspan="3">المجموع الفرعي</td>
-                    <td>210.00</td>
+                    <th>Quantity_Sales</th>
+                    <th>Sales_Price</th>
+                    <th>Total_Price</th>
                 </tr>
+            </thead>
+            <tbody>
+                @forelse ($Sales as $Sale)
+                    
                 <tr>
-                    <td colspan="3">إجمالي الفاتورة</td>
-                    <td>210.00</td>
+                    <td>{{$Sale->quantity_sale}}</td>
+                    <td>{{$Sale->sales_price}}</td>
+                    <td>{{$Sale->total_sales_price}}</td>
                 </tr>
-            </tfoot> --}}
+                @empty
+                    
+                @endforelse
+            </tbody>
         </table>
 
         <table>
@@ -144,17 +158,17 @@
                     
                 @endforelse
             </tbody>
-            {{-- <tfoot>
-                <tr>
-                    <td colspan="3">المجموع الفرعي</td>
-                    <td>210.00</td>
-                </tr>
-                <tr>
-                    <td colspan="3">إجمالي الفاتورة</td>
-                    <td>210.00</td>
-                </tr>
-            </tfoot> --}}
         </table>
+      
+        @if ($totalShipmentCosts !== null)
+        
+            <p><strong>Total Shipment Cost: {{$totalShipmentCosts}}</strong></p>
+        @endif
+
+        @if ($SubtractTotalCost !== null)
+        
+        <p><strong>Subtract Total Cost: {{$SubtractTotalCost}}</strong></p>
+    @endif
     </div>
 </body>
 </html>

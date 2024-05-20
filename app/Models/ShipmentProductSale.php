@@ -11,12 +11,12 @@ class ShipmentProductSale extends Model
     use HasFactory;
 
     protected $fillable = [
-        'shipmentproduct_id','sales_price','quantity_sale','total_sales_price'
+        'shipment_product_id','sales_price','quantity_sale','total_sales_price'
     ];
 
-    public function productsales()
+    public function products()
     {
-        return $this->belongsTo(ShipmentProduct::class,'shipmentproduct_id');
+        return $this->belongsTo(ShipmentProduct::class,'shipment_product_id');
     }
 
 

@@ -16,8 +16,8 @@ class ShipmentController extends Controller
     public function index()
     {
         $Shipments=Shipment::with('clients','suppliers')->get();
-        $ShipmentProducts=ShipmentProduct::with('products','shipment')->get();
-        $ShipmentProductSales=ShipmentProductSale::with('productsales')->get();
+        $ShipmentProducts=ShipmentProduct::with('products','shipment','currencies')->get();
+        $ShipmentProductSales=ShipmentProductSale::with('products')->get();
         return view("shipment.show",compact('Shipments','ShipmentProducts','ShipmentProductSales'));
     }
 
@@ -67,12 +67,18 @@ class ShipmentController extends Controller
 
     public function invoicepdf($id)
     {
-          $Shipments = Shipment::findOrfail($id);
-          $shipmentproduct = $Shipments->shipmentproduct;
-          $Expenses = $Shipments->expenses;
+        $Shipments = Shipment::findOrfail($id);
+        $shipmentproduct = $Shipments->shipmentproduct;
+        $Expenses = $Shipments->expenses;
+        $Products = ShipmentProduct::findOrfail($id);
+        $Sales = $Products->sales;
 
-        //   $ShipmentProducts = ShipmentProduct::findOrfail($id);
-        //    $sales = $ShipmentProducts->productsales;
+        //    ------------ AllTotalPrice---------  //
+        $totalProductCost = $shipmentproduct->sum('total_price');
+        $totalExpenseCost = $Expenses->sum('expense_cost');
+        $totalSales = $Sales->sum('total_sales_price');
+        $totalShipmentCosts = $totalProductCost + $totalExpenseCost + $totalSales;
+        $SubtractTotalCost = $totalShipmentCosts - $totalExpenseCost;
 
 
         $data = [
@@ -80,7 +86,10 @@ class ShipmentController extends Controller
             'date'=>date('m/d/Y'),
             'shipmentproduct'=>$shipmentproduct,
             'Shipments'=>$Shipments,
+            'Sales'=>$Sales,
             'Expenses'=>$Expenses,
+            'totalShipmentCosts'=>$totalShipmentCosts,
+            'SubtractTotalCost'=>$SubtractTotalCost,
         ];
         $pdf = Pdf::loadView('shipment.pdf',$data);
         return $pdf->download('invoice.pdf');

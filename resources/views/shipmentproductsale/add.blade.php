@@ -10,12 +10,6 @@
 <form class="forms-sample" action="{{route('ShipmentProductSale.create')}}" method="post" >
 @csrf
 
-
-{{-- <div class="form-group">
-<label for="quantity">quantity</label>
-<input type="number" name="quantity" class="form-control" id="quantity" value="" placeholder="quantity" required>
-</div> --}}
-
 <div class="form-group">
 <label for="quantity">quantity</label>
 <input type="number" name="quantity" class="form-control" id="quantity" value="{{$ShipmentSales->quantity}}" placeholder="quantity" required>
@@ -47,6 +41,7 @@
 </div>
 
 <input type="hidden" name="shipmentproduct_id" value="{{ $ShipmentSales->id }}">
+{{-- <input type="text" name="shipmentproduct_id" value="{{ $ShipmentSales->shipment_id }}"> --}}
   
 <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
 <a href="{{route('shipments')}}" class="btn btn-light">Cancel</a>

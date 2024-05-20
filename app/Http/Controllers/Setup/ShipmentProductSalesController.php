@@ -21,7 +21,7 @@ class ShipmentProductSalesController extends Controller
             'sales_price'=>$request->input('sales_price'),
             'quantity_sale'=>$request->input('quantity_sale'),
             'total_sales_price'=>$request->input('total_sales_price'),
-            'shipmentproduct_id'=>$request->input('shipmentproduct_id'),
+            'shipment_product_id'=>$request->input('shipmentproduct_id'),
         ]);
         
         return redirect()->route('shipments');
@@ -41,7 +41,7 @@ class ShipmentProductSalesController extends Controller
             'sales_price'=>$request->input('sales_price'),
             'quantity_sale'=>$request->input('quantity_sale'),
             'total_sales_price'=>$request->input('total_sales_price'),
-            'shipmentproduct_id'=>$request->input('shipmentproduct_id'),
+            'shipment_product_id'=>$request->input('shipmentproduct_id'),
         ]);
         return redirect()->route('shipments');
     }

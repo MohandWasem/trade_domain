@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Setup;
 
 use App\Models\Product;
+use App\Models\Currency;
 use App\Models\Shipment;
 use Illuminate\Http\Request;
 use App\Models\ShipmentProduct;
@@ -15,7 +16,8 @@ class ShipmentProductController extends Controller
     {
         $shipment = Shipment::findOrfail($shipment_id);
         $products = Product::get();
-        return view('shipmentproduct.add',compact('shipment','products'));
+        $currencies = Currency::get();
+        return view('shipmentproduct.add',compact('shipment','products','currencies'));
     }
 
     public function create(Request $request)
@@ -24,6 +26,7 @@ class ShipmentProductController extends Controller
             'product_id'=>$request->input('product_id'),
             'quantity'=>$request->input('quantity'),
             'price'=>$request->input('price'),
+            'currency_id'=>$request->input('currency_id'),
             'total_price'=>$request->input('total_price'),
             'shipment_id'=>$request->input('shipment_id'),
         ]);
@@ -35,7 +38,8 @@ class ShipmentProductController extends Controller
         $shipmentproducts = ShipmentProduct::findOrfail($id);
         $shipment = Shipment::get();
         $products = Product::get();
-        return view('shipmentproduct.edit',compact('shipmentproducts','products','shipment'));
+        $currencies = Currency::get();
+        return view('shipmentproduct.edit',compact('shipmentproducts','products','shipment','currencies'));
     }
 
     public function update(Request $request , $id)
@@ -45,6 +49,7 @@ class ShipmentProductController extends Controller
             'product_id'=>$request->input('product_id'),
             'quantity'=>$request->input('quantity'),
             'price'=>$request->input('price'),
+            'currency_id'=>$request->input('currency_id'),
             'total_price'=>$request->input('total_price'),
             'shipment_id'=>$request->input('shipment_id'),
         ]);

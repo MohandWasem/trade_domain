@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Product;
+use App\Models\Currency;
 use App\Models\Shipment;
 use App\Models\ShipmentProductSale;
 use Illuminate\Database\Eloquent\Model;
@@ -13,7 +14,7 @@ class ShipmentProduct extends Model
     use HasFactory;
 
     protected $fillable = [
-        'product_id','quantity','price','total_price','shipment_id'
+        'product_id','quantity','price','total_price','shipment_id','currency_id'
     ];
 
     public function shipment()
@@ -26,7 +27,12 @@ class ShipmentProduct extends Model
         return $this->belongsTo(Product::class,'product_id');
     }
 
-    public function productsales()
+    public function currencies()
+    {
+        return $this->belongsTo(Currency::class,'currency_id');
+    }
+
+    public function sales()
     {
         return $this->hasMany(ShipmentProductSale::class);
     }

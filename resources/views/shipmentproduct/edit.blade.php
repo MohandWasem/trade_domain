@@ -33,6 +33,18 @@
 </div>
 
 <div class="form-group">
+<label for="exampleSelectGender">Currency_Name</label>
+<select class="form-control" name="currency_id" id="exampleSelectGender">
+@forelse ( $currencies as $currency )
+
+<option value="{{$currency->id}}" @selected($shipmentproducts->currency_id == $currency->id)>{{$currency->currency_name}}</option>
+@empty
+@endforelse
+
+</select>
+</div>
+
+<div class="form-group">
 <label for="total">Total Price</label>
 <input type="text" name="total_price" class="form-control" id="total" value="{{$shipmentproducts->total_price}}" placeholder="total price" readonly required>
 </div>

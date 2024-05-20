@@ -76,6 +76,7 @@
               <th> Product_Name</th>
               <th> Quantity</th>
               <th> Price</th>
+              <th> Currency</th>
               <th> Total_Price</th>
               <th> Action </th>
             </tr>
@@ -92,6 +93,7 @@
              <td>{{$ShipmentProduct->products->product_name}}</td>
              <td>{{$ShipmentProduct->quantity}}</td>
              <td>{{$ShipmentProduct->price}}</td>
+             <td>{{$ShipmentProduct->currencies->currency_name}}</td>
              <td>{{$ShipmentProduct->total_price}}</td>
              <td>
                <a href="{{route('ShipmentProductSale.add',$ShipmentProduct)}}" class="btn btn-gradient-success btn-fw">Add ProductSales</a>
@@ -150,12 +152,12 @@
                    <tr class="table-responsive-sm">
                      <td></td>
                      <td>{{$ShipmentProductSale->serial_shipmentproductsale}}</td>
-                     <td>{{$ShipmentProductSale->productsales->shipment->clients->client_name}}</td>
-                     <td>{{$ShipmentProductSale->productsales->shipment->suppliers->supplier_name}}</td>
-                     <td>{{$ShipmentProductSale->productsales->products->product_name}}</td>
-                     <td>{{$ShipmentProductSale->productsales->quantity}}</td>
-                     <td>{{$ShipmentProductSale->productsales->price}}</td>
-                     <td>{{$ShipmentProductSale->productsales->total_price}}</td>
+                     <td>{{$ShipmentProductSale->products->shipment->clients->client_name}}</td>
+                     <td>{{$ShipmentProductSale->products->shipment->suppliers->supplier_name}}</td>
+                     <td>{{$ShipmentProductSale->products->products->product_name}}</td>
+                     <td>{{$ShipmentProductSale->products->quantity}}</td>
+                     <td>{{$ShipmentProductSale->products->price}}</td>
+                     <td>{{$ShipmentProductSale->products->total_price}}</td>
                      <td>{{$ShipmentProductSale->quantity_sale}}</td>
                      <td>{{$ShipmentProductSale->sales_price}}</td>
                      <td>{{$ShipmentProductSale->total_sales_price}}</td>
