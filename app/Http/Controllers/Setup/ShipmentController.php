@@ -72,15 +72,13 @@ class ShipmentController extends Controller
         $Expenses = $Shipments->expenses;
         $Products = ShipmentProduct::findOrfail($id);
         $Sales = $Products->sales;
-
+        
         //    ------------ AllTotalPrice---------  //
         $totalProductCost = $shipmentproduct->sum('total_price');
         $totalExpenseCost = $Expenses->sum('expense_cost');
         $totalSales = $Sales->sum('total_sales_price');
         $totalShipmentCosts = $totalProductCost + $totalExpenseCost + $totalSales;
         $SubtractTotalCost = $totalShipmentCosts - $totalExpenseCost;
-
-
         $data = [
             'title'=>'Overseas Egypt',
             'date'=>date('m/d/Y'),

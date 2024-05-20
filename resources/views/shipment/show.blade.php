@@ -146,7 +146,6 @@
                     </tr>
                   </thead>
                   <tbody>
-        
                    @forelse ($ShipmentProductSales as $ShipmentProductSale)
                        
                    <tr class="table-responsive-sm">
