@@ -21,6 +21,11 @@
 </div>
 
 <div class="form-group">
+<label for="price">Currency</label>
+<input type="text" name="currency_id" class="form-control" id="price" value="{{$ShipmentSales->currencies->currency_name}}" placeholder="price" required>
+</div>
+
+<div class="form-group">
 <label for="total">Total Price</label>
 <input type="text" name="total_price" class="form-control" id="total" value="{{$ShipmentSales->total_price}}" placeholder="total price" readonly required>
 </div>

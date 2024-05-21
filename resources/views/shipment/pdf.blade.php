@@ -38,8 +38,10 @@
         }
 
         .company-details h2 {
-            margin: 0;
+            margin-left: 70%;
             color: #333;
+            width: 300px;
+            font-size: 15px;
         }
 
         .company-details p, .invoice-details p {
@@ -55,12 +57,13 @@
         table th, table td {
             border: 1px solid #ddd;
             padding: 10px;
-            text-align: left;
+            text-align: center;
         }
 
         table th {
-            background-color: #f0f0f0;
-            color: #333;
+            /* background-color: #f0f0f0; */
+            background-color: #6c7ae0;
+            color: #fff;
         }
 
         tfoot tr {
@@ -75,8 +78,8 @@
         <h1>Shipment invoice</h1>
         <div class="header">
             <div class="company-details">
-                <h2>Overseas Egypt</h2>
-                <p>18A El-Obour buildings, Salah Salem St, 13th floor flat 3, Cairo, Egypt.</p>
+                <h2>Operation Expenses</h2>
+                <p>Type:Import</p>
                 <p>+20-02-22622247</p>
                 <p>info@os-eg.com</p>
             </div>
@@ -85,14 +88,13 @@
             </div>
         </div>
         <table>
-            <h2 style="width:200px;">Products invoice</h2>
+            <h3 style="width:200px;">Products invoice</h3>
             <thead>
                 <tr>
-                    <th>Client</th>
-                    <th>Supplier</th>
                     <th>Product</th>
                     <th>Quantity</th>
                     <th>Price</th>
+                    <th>Currency</th>
                     <th>Total_Price</th>
                 </tr>
             </thead>
@@ -100,11 +102,10 @@
                 @forelse ($shipmentproduct as $shipmentproduct)
                     
                 <tr>
-                    <td>{{$shipmentproduct->shipment->clients->client_name}}</td>
-                    <td>{{$shipmentproduct->shipment->suppliers->supplier_name}}</td>
                     <td>{{$shipmentproduct->products->product_name}}</td>
                     <td>{{$shipmentproduct->quantity}}</td>
                     <td>{{$shipmentproduct->price}}</td>
+                    <td>{{$shipmentproduct->currencies->currency_name}}</td>
                     <td>{{$shipmentproduct->total_price}}</td>
                 </tr>
                 @empty
@@ -115,11 +116,12 @@
 
 
         <table>
-            <h2>Sales invoice</h2>
+            <h3>Sales invoice</h3>
             <thead>
                 <tr>
                     <th>Quantity_Sales</th>
                     <th>Sales_Price</th>
+                    {{-- <th>Currency</th> --}}
                     <th>Total_Price</th>
                 </tr>
             </thead>
@@ -129,6 +131,7 @@
                 <tr>
                     <td>{{$Sale->quantity_sale}}</td>
                     <td>{{$Sale->sales_price}}</td>
+                    {{-- <td>{{$Sale->sales_price}}</td> --}}
                     <td>{{$Sale->total_sales_price}}</td>
                 </tr>
                 @empty
@@ -138,7 +141,7 @@
         </table>
 
         <table>
-            <h2>Expenses invoice</h2>
+            <h3>Expenses invoice</h3>
             <thead>
                 <tr>
                     <th>Expense_Name</th>
@@ -160,15 +163,86 @@
             </tbody>
         </table>
       
-        @if ($totalShipmentCosts !== null)
+        {{-- @if ($totalShipmentCosts !== null)
         
-            <p><strong>Total Shipment Cost: {{$totalShipmentCosts}}</strong></p>
+            <p><strong>Total Shipment Cost: {{$totalShipmentCosts}} {{$shipmentproduct->currencies->currency_name}}</strong></p>
         @endif
 
         @if ($SubtractTotalCost !== null)
         
-        <p><strong>Subtract Total Cost: {{$SubtractTotalCost}}</strong></p>
-    @endif
+        <p><strong>Subtract Total Cost: {{$SubtractTotalCost}} {{$shipmentproduct->currencies->currency_name}}</strong></p>
+    @endif --}}
+
+    <table>
+        <h3 >Total</h3>
+        <thead>
+            <tr>
+                <th>USD</th>
+                <th>EGP</th>
+                <th>EURO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                  @if ($totalShipmentCosts !== null && $shipmentproduct->currencies->currency_name =='US')
+        
+                    <p><strong> {{$totalShipmentCosts}} {{$shipmentproduct->currencies->currency_name}}</strong></p>
+                  @endif
+                </td>
+
+                <td>
+                   @if ($totalShipmentCosts !== null && $shipmentproduct->currencies->currency_name =='EG')
+        
+                    <p><strong> {{$totalShipmentCosts}} {{$shipmentproduct->currencies->currency_name}}</strong></p>
+                   @endif
+                </td>
+
+                <td>
+                    @if ($totalShipmentCosts !== null && $shipmentproduct->currencies->currency_name =='EU')
+         
+                     <p><strong> {{$totalShipmentCosts}} {{$shipmentproduct->currencies->currency_name}}</strong></p>
+                    @endif
+                 </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <h3>Total Profit</h3>
+        <thead>
+            <tr>
+                <th>USD</th>
+                <th>EGP</th>
+                <th>EURO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                  @if ($SubtractTotalCost !== null && $shipmentproduct->currencies->currency_name =='US')
+        
+                    <p><strong> {{$SubtractTotalCost}} {{$shipmentproduct->currencies->currency_name}}</strong></p>
+                  @endif
+                </td>
+
+                <td>
+                   @if ($SubtractTotalCost !== null && $shipmentproduct->currencies->currency_name =='EG')
+        
+                    <p><strong> {{$SubtractTotalCost}} {{$shipmentproduct->currencies->currency_name}}</strong></p>
+                   @endif
+                </td>
+
+                <td>
+                    @if ($SubtractTotalCost !== null && $shipmentproduct->currencies->currency_name =='EU')
+         
+                     <p><strong> {{$SubtractTotalCost}} {{$shipmentproduct->currencies->currency_name}}</strong></p>
+                    @endif
+                 </td>
+            </tr>
+        </tbody>
+    </table>
+
     </div>
 </body>
 </html>
