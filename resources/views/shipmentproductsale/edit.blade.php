@@ -10,20 +10,6 @@
 <form class="forms-sample" action="{{route('ShipmentProductSale.update',$ShipmentProductSale->id)}}" method="post" >
 @csrf
 
-{{-- <div class="form-group">
-<label for="quantity">quantity</label>
-<input type="number" name="quantity" class="form-control" id="quantity" value="{{$ShipmentSales->quantity}}" placeholder="quantity" required>
-</div>
-
-<div class="form-group">
-<label for="price">Price per unit</label>
-<input type="number" name="price" class="form-control" id="price" value="{{$ShipmentSales->price}}" placeholder="price" required>
-</div>
-
-<div class="form-group">
-<label for="total">Total Price</label>
-<input type="text" name="total_price" class="form-control" id="total" value="{{$ShipmentSales->total_price}}" placeholder="total price" readonly required>
-</div> --}}
 
 <div class="form-group">
 <label for="quantity_sale">quantity</label>
@@ -33,6 +19,18 @@
 <div class="form-group">
 <label for="sales">Sales per unit</label>
 <input type="text" name="sales_price" class="form-control" id="sales" value="{{$ShipmentProductSale->sales_price}}" placeholder="Sales Price" required>
+</div>
+
+<div class="form-group">
+<label for="exampleSelectGender">Currency_Name</label>
+<select class="form-control" name="currency_id" id="exampleSelectGender">
+@forelse ( $currencies as $currency )
+
+<option value="{{$currency->id}}" @selected($ShipmentProductSale->currency_id == $currency->id)>{{$currency->currency_name}}</option>
+@empty
+@endforelse
+
+</select>
 </div>
 
 <div class="form-group">

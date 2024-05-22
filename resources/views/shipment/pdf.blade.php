@@ -61,7 +61,6 @@
         }
 
         table th {
-            /* background-color: #f0f0f0; */
             background-color: #6c7ae0;
             color: #fff;
         }
@@ -88,8 +87,11 @@
             </div>
         </div>
         <table>
-            <h3 style="width:200px;">Products invoice</h3>
+            {{-- <h3 style="width:200px;">Products invoice</h3> --}}
             <thead>
+                <tr>
+                    <th colspan="5">Products invoice</th>
+                </tr>
                 <tr>
                     <th>Product</th>
                     <th>Quantity</th>
@@ -116,12 +118,15 @@
 
 
         <table>
-            <h3>Sales invoice</h3>
+            {{-- <h3>Sales invoice</h3> --}}
             <thead>
+                <tr>
+                    <th colspan="4">Sales invoice</th>
+                </tr>
                 <tr>
                     <th>Quantity_Sales</th>
                     <th>Sales_Price</th>
-                    {{-- <th>Currency</th> --}}
+                    <th>Currency</th>
                     <th>Total_Price</th>
                 </tr>
             </thead>
@@ -131,7 +136,7 @@
                 <tr>
                     <td>{{$Sale->quantity_sale}}</td>
                     <td>{{$Sale->sales_price}}</td>
-                    {{-- <td>{{$Sale->sales_price}}</td> --}}
+                    <td>{{$Sale->currencies->currency_name}}</td>
                     <td>{{$Sale->total_sales_price}}</td>
                 </tr>
                 @empty
@@ -141,8 +146,11 @@
         </table>
 
         <table>
-            <h3>Expenses invoice</h3>
+            {{-- <h3>Expenses invoice</h3> --}}
             <thead>
+                <tr>
+                    <th colspan="3">Expenses invoice</th>
+                </tr>
                 <tr>
                     <th>Expense_Name</th>
                     <th>Currency</th>
@@ -174,41 +182,63 @@
     @endif --}}
 
     <table>
-        <h3 >Total</h3>
+        {{-- <h3 >Total</h3> --}}
         <thead>
             <tr>
-                <th>USD</th>
-                <th>EGP</th>
-                <th>EURO</th>
+                {{-- <th colspan="3">Products</th> --}}
+                <th colspan="3">Total</th>
+            </tr>
+            <tr>
+                <th>US</th>
+                <th>EG</th>
+                <th>EU</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>
-                  @if ($totalShipmentCosts !== null && $shipmentproduct->currencies->currency_name =='US')
-        
-                    <p><strong> {{$totalShipmentCosts}} {{$shipmentproduct->currencies->currency_name}}</strong></p>
-                  @endif
-                </td>
-
-                <td>
-                   @if ($totalShipmentCosts !== null && $shipmentproduct->currencies->currency_name =='EG')
-        
-                    <p><strong> {{$totalShipmentCosts}} {{$shipmentproduct->currencies->currency_name}}</strong></p>
-                   @endif
-                </td>
-
-                <td>
-                    @if ($totalShipmentCosts !== null && $shipmentproduct->currencies->currency_name =='EU')
-         
-                     <p><strong> {{$totalShipmentCosts}} {{$shipmentproduct->currencies->currency_name}}</strong></p>
-                    @endif
-                 </td>
+                <td>{{$AddUSD}}</td>
+                <td>{{$AddGBP}}</td>
+                <td>{{$AddEUR}}</td>
             </tr>
         </tbody>
     </table>
+<br>
 
     <table>
+        {{-- <h3>Total Profit</h3> --}}
+        <thead>
+            <tr>
+                {{-- <th colspan="3">Products</th> --}}
+                <th colspan="3">Total Profit</th>
+            </tr>
+            <tr>
+                <th>EG</th>
+                <th>US</th>
+                <th>EU</th>
+                {{-- <th>EG</th>
+                <th>US</th>
+                <th>EU</th> --}}
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{$differenceGBP}}</td>
+                <td>{{$differenceUSD}}</td>
+                <td>{{$differenceEUR}}</td>
+                {{-- <td>{{$differenceUSD}}</td>
+                <td>{{$differenceUSD}}</td>
+                <td>{{$differenceUSD}}</td> --}}
+            </tr>
+            {{-- <tr>
+                <th colspan="3">DIF</th>
+                <td>{{$differenceGBP}}</td>
+                <td>{{$differenceUSD}}</td>
+                <td>{{$differenceEUR}}</td>
+            </tr> --}}
+        </tbody>
+    </table>
+
+    {{-- <table>
         <h3>Total Profit</h3>
         <thead>
             <tr>
@@ -241,7 +271,7 @@
                  </td>
             </tr>
         </tbody>
-    </table>
+    </table> --}}
 
     </div>
 </body>

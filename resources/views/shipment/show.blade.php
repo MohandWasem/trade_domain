@@ -138,10 +138,10 @@
                       <th> Product_Name</th>
                       <th> Quantity</th>
                       <th> Price</th>
-                      <th> Currency</th>
                       <th> Total_Price</th>
                       <th> Quantity_Sales</th>
                       <th> Sales_Price</th>
+                      <th> Currency</th>
                       <th> Total_Price_Sales</th>
                       <th> Action </th>
                     </tr>
@@ -155,12 +155,12 @@
                      <td>{{$ShipmentProductSale->products->shipment->clients->client_name}}</td>
                      <td>{{$ShipmentProductSale->products->shipment->suppliers->supplier_name}}</td>
                      <td>{{$ShipmentProductSale->products->products->product_name}}</td>
-                     <td>{{$ShipmentProductSale->products->quantity}}</td>
                      <td>{{$ShipmentProductSale->products->price}}</td>
                      <td>{{$ShipmentProductSale->products->currencies->currency_name}}</td>
                      <td>{{$ShipmentProductSale->products->total_price}}</td>
                      <td>{{$ShipmentProductSale->quantity_sale}}</td>
                      <td>{{$ShipmentProductSale->sales_price}}</td>
+                     <td>{{$ShipmentProductSale->currencies->currency_name}}</td>
                      <td>{{$ShipmentProductSale->total_sales_price}}</td>
                      <td>
                        

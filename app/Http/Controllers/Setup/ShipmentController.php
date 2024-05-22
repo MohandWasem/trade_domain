@@ -79,6 +79,32 @@ class ShipmentController extends Controller
         $totalSales = $Sales->sum('total_sales_price');
         $totalShipmentCosts = $totalProductCost + $totalExpenseCost + $totalSales;
         $SubtractTotalCost = $totalShipmentCosts - $totalExpenseCost;
+
+        //    ------------ AllTotalPriceCurrencyExpenses---------  //
+        $totalExpenseGBP = $Expenses->where('currency_id', '2')->sum('expense_cost');
+        $totalExpenseUSD = $Expenses->where('currency_id', '1')->sum('expense_cost');
+        $totalExpenseEUR = $Expenses->where('currency_id', '3')->sum('expense_cost');
+
+        //    ------------ AllTotalPriceCurrencyProducts---------  //
+        $totalProductGBP = $shipmentproduct->where('currency_id', '2')->sum('total_price');
+        $totalProductUSD = $shipmentproduct->where('currency_id', '1')->sum('total_price');
+        $totalProductEUR = $shipmentproduct->where('currency_id', '3')->sum('total_price');
+
+        //    ------------ AllTotalPriceCurrencySales---------  //
+        $totalSaleGBP = $Sales->where('currency_id', '2')->sum('total_sales_price');
+        $totalSaleUSD = $Sales->where('currency_id', '1')->sum('total_sales_price');
+        $totalSaleEUR = $Sales->where('currency_id', '3')->sum('total_sales_price');
+
+       //    ------------ AllTotalPriceCurrencyDiff---------  //
+        $differenceGBP = $totalSaleGBP - $totalExpenseGBP - $totalProductGBP;
+        $differenceUSD = $totalSaleUSD - $totalExpenseUSD - $totalProductUSD;
+        $differenceEUR = $totalSaleEUR - $totalExpenseEUR - $totalProductEUR;
+
+        //    ------------ AllTotalPriceCurrencyAdd---------  //
+        $AddGBP = $totalProductGBP + $totalExpenseGBP + $totalSaleGBP;
+        $AddUSD = $totalProductUSD + $totalExpenseUSD + $totalSaleUSD;
+        $AddEUR = $totalProductEUR + $totalExpenseEUR + $totalSaleEUR;
+
         $data = [
             'title'=>'Overseas Egypt',
             'date'=>date('m/d/Y'),
@@ -88,6 +114,12 @@ class ShipmentController extends Controller
             'Expenses'=>$Expenses,
             'totalShipmentCosts'=>$totalShipmentCosts,
             'SubtractTotalCost'=>$SubtractTotalCost,
+            'differenceGBP'=>$differenceGBP,
+            'differenceUSD'=>$differenceUSD,
+            'differenceEUR'=>$differenceEUR,
+            'AddGBP'=>$AddGBP,
+            'AddUSD'=>$AddUSD,
+            'AddEUR'=>$AddEUR,
         ];
         $pdf = Pdf::loadView('shipment.pdf',$data);
         return $pdf->download('invoice.pdf');
