@@ -74,11 +74,13 @@
 </head>
 <body>
     <div class="invoice-box">
-        <h1>Shipment invoice</h1>
+        <h1>Shipment Report</h1>
         <div class="header">
             <div class="company-details">
                 <h2>Operation Expenses</h2>
-                <p>Type:Import</p>
+                <p>Customer :
+                    {{$Shipments->is_selected == 1 ? $Shipments->clients->client_name : 'Direct'}}
+                </p>
                 <p>+20-02-22622247</p>
                 <p>info@os-eg.com</p>
             </div>
@@ -87,7 +89,6 @@
             </div>
         </div>
         <table>
-            {{-- <h3 style="width:200px;">Products invoice</h3> --}}
             <thead>
                 <tr>
                     <th colspan="5">Products invoice</th>
@@ -118,7 +119,6 @@
 
 
         <table>
-            {{-- <h3>Sales invoice</h3> --}}
             <thead>
                 <tr>
                     <th colspan="4">Sales invoice</th>
@@ -146,7 +146,6 @@
         </table>
 
         <table>
-            {{-- <h3>Expenses invoice</h3> --}}
             <thead>
                 <tr>
                     <th colspan="3">Expenses invoice</th>
@@ -182,10 +181,8 @@
     @endif --}}
 
     <table>
-        {{-- <h3 >Total</h3> --}}
         <thead>
             <tr>
-                {{-- <th colspan="3">Products</th> --}}
                 <th colspan="3">Total</th>
             </tr>
             <tr>
@@ -205,19 +202,14 @@
 <br>
 
     <table>
-        {{-- <h3>Total Profit</h3> --}}
         <thead>
             <tr>
-                {{-- <th colspan="3">Products</th> --}}
                 <th colspan="3">Total Profit</th>
             </tr>
             <tr>
                 <th>EG</th>
                 <th>US</th>
                 <th>EU</th>
-                {{-- <th>EG</th>
-                <th>US</th>
-                <th>EU</th> --}}
             </tr>
         </thead>
         <tbody>
@@ -225,9 +217,6 @@
                 <td>{{$differenceGBP}}</td>
                 <td>{{$differenceUSD}}</td>
                 <td>{{$differenceEUR}}</td>
-                {{-- <td>{{$differenceUSD}}</td>
-                <td>{{$differenceUSD}}</td>
-                <td>{{$differenceUSD}}</td> --}}
             </tr>
             {{-- <tr>
                 <th colspan="3">DIF</th>
