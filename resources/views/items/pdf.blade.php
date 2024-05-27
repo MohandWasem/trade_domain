@@ -31,10 +31,8 @@
 
         .pro {
             padding-left: 31%;
-            /* padding-bottom: 20px; */
             color: #1a0dab;
             font-size: 13px;
-            /* margin-bottom: 100px; */
         }
 
         .date, .reference, .recipient, .subject {
@@ -129,8 +127,8 @@
         <h1 class="overseas">Overseas Egypt</h1>
         <p class="pro">Professional Freight Forwarder</p>
         <p class="date">Date : {{$date}}</p>
-        <p class="reference">Our reference: Main. 021</p>
-        <p class="recipient">Messers <div>Datacenter Dynamics</div>At the kind attention of {{$offers->attention}}</p>
+        <p class="reference">Our reference: {{$offers->serial_offer}}</p>
+        <p class="recipient">Messers <div>{{$offers->client}}</div>At the kind attention of {{$offers->attention}}</p>
         <h2 class="subject">Subject: {{$offers->subject}}</h2>
         <p class="content">
             <div class="sir">Dear Sir,</div>
