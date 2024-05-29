@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Setup;
 
 use App\Models\Client;
+use App\Models\Expense;
 use App\Models\Shipment;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
@@ -61,6 +62,7 @@ class ShipmentController extends Controller
 
     public function delete($id)
     {
+        Expense::where('shipment_id', $id)->delete();
         $Shipments=Shipment::where('id',$id)->delete();
         return redirect()->route('shipments');
     }

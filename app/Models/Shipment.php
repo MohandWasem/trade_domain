@@ -6,6 +6,7 @@ use App\Models\Client;
 use App\Models\Expense;
 use App\Models\Supplier;
 use App\Models\ShipmentProduct;
+use App\Models\ShipmentProductSale;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -35,6 +36,11 @@ class Shipment extends Model
     public function suppliers()
     {
         return $this->belongsTo(Supplier::class,'supplier_id');
+    }
+
+    public function sales()
+    {
+        return $this->hasManyThrough(ShipmentProductSale::class, ShipmentProduct::class);
     }
 
     protected $appends = ['serial_shipment'];

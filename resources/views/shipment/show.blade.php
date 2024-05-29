@@ -46,6 +46,7 @@
                @csrf
                <input type="submit" class="btn btn-danger" value="delete">
               </form>
+              <a href="{{route('payment.add',$Shipment)}}" class="btn btn-gradient-warning btn-fw">Add Payment</a>
             </td>
             
            @empty
@@ -107,6 +108,7 @@
                @csrf
                <input type="submit" class="btn btn-danger" value="delete">
               </form>
+              {{-- <a href="{{route('payment.add',$ShipmentProduct)}}" class="btn btn-gradient-warning btn-fw">Add Payment</a> --}}
             </td>
             
            @empty

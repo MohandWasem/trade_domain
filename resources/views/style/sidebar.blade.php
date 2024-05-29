@@ -66,24 +66,19 @@
       <i class="mdi mdi-contacts menu-icon"></i>
       </a>
   </li>
-    
-   
-    
-    {{-- <li class="nav-item">
-    <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-    <span class="menu-title">Setup</span>
-    <i class="menu-arrow"></i>
-    <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-    </a>
-    <div class="collapse" id="ui-basic">
-    <ul class="nav flex-column sub-menu">
-    
-    <li class="nav-item"> <a class="nav-link" href="{{route('parameter')}}"></a></li>
 
-    </ul>
+  <li class="nav-item">
+    <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
+      <span class="menu-title">Accounting</span>
+      <i class="menu-arrow"></i>
+      <i class="mdi mdi-medical-bag menu-icon"></i>
+    </a>
+    <div class="collapse" id="general-pages">
+      <ul class="nav flex-column sub-menu">
+        <li class="nav-item"> <a class="nav-link" href="{{route('payment')}}"> Accounts </a></li>
+      </ul>
     </div>
-    </li> --}}
-    
+  </li>
     
     </ul>
     </nav>

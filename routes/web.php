@@ -11,6 +11,7 @@ use App\Http\Controllers\Setup\CategoryController;
 use App\Http\Controllers\Setup\CurrencyController;
 use App\Http\Controllers\Setup\ShipmentController;
 use App\Http\Controllers\Setup\SupplierController;
+use App\Http\Controllers\Account\PaymentController;
 use App\Http\Controllers\Setup\ShipmentProductController;
 use App\Http\Controllers\Setup\ShipmentProductSalesController;
 
@@ -158,4 +159,13 @@ Route::controller(ExpenseController::class)->middleware('AuthAdmin')->group(func
     Route::post('Expenses/edit/{id}','edit')->name('Expenses.edit');
     Route::post('Expenses/update/{id}','update')->name('Expenses.update');
     Route::post('Expenses/delete/{id}','delete')->name('Expenses.delete');
+});
+
+
+//   ----------------Payment---------- // 
+
+Route::controller(PaymentController::class)->middleware('AuthAdmin')->group(function(){
+    Route::get('Accounts','index')->name('payment');
+    Route::get('Payment/add/{id}','add')->name('payment.add');
+    Route::post('Payment/create/{id}','create')->name('payment.create');
 });

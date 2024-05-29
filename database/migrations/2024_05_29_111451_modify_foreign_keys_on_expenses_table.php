@@ -11,15 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('expenses', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('shipment_id');
+        Schema::table('expenses', function (Blueprint $table) {
+            $table->dropForeign(['shipment_id']);
             $table->foreign('shipment_id')->references('id')->on('shipments')->onDelete('cascade');
-            $table->string('expense_name',150);
-            $table->unsignedBigInteger('currency_id');
-            $table->foreign('currency_id')->references('id')->on('currencies');
-            $table->string('expense_cost',150);
-            $table->timestamps();
         });
     }
 
@@ -28,6 +22,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('expenses');
+        Schema::table('expenses', function (Blueprint $table) {
+            $table->dropForeign(['shipment_id']);
+            // إعادة إنشاء قيد المفتاح الأجنبي بدون ON DELETE CASCADE
+            $table->foreign('shipment_id')->references('id')->on('shipments');
+        });
     }
 };
